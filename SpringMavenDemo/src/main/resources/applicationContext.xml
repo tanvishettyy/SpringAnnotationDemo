@@ -1,0 +1,36 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+  
+
+   <bean id="empbean" class="model.Employee" scope="singleton" init-method="intit" lazy-init="true" destroy-method="destroy"> <!--lazy loading-->
+  <constructor-arg type="String"  value="Tanvi" /> <!-- constructor injection -->
+  <constructor-arg type="Device" ref="desktopDevice"/> <!-- wiring  -->
+  <property name="empId" value="1" />
+ </bean> 
+ 
+ <bean id ="empbean1" class="model.Employee" autowire="default" lazy-init="true">
+	 <property name="name" value="Shetty"/>
+	<property name="empId" value="2" />
+	</bean>
+ 
+ <!-- <bean id ="empbean1" class="model.Employee" autowire="default">
+	 <property name="name" value="Shetty"/>
+	<property name="empId" value="2" />
+	<property name="type" value="laptopDevice" />
+</bean>
+
+<bean id="laptopDevice" class="model.Device" scope="prototype">
+<property name="type" value="Laptop"/>
+<property name="modelNum" value="GHM09"/>
+</bean>-->
+
+<bean id="desktopDevice" class="model.Device" scope="prototype">
+<property name="type" value="Desktop"/>
+<property name="modelNum" value="Desktop-DESK09"/>
+</bean> 
+
+</beans>
+
